@@ -1,0 +1,9 @@
+.vs
+*.sln
+
+*.obj
+*.ilk
+*.exe
+*.pdb
+
+*.rdbg

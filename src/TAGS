@@ -1,0 +1,111 @@
+
+c:/Dev/Lister/src\lister.c,2254
+#define WIN32_LEAN_AND_MEANWIN32_LEAN_AND_MEAN10,152
+#define KB(KB19,276
+#define MB(MB20,305
+#define GB(GB21,334
+#define MIN(MIN23,364
+#define MAX(MAX24,406
+    FORMAT_WIDE,FORMAT_WIDE27,456
+    FORMAT_LONG,FORMAT_LONG28,473
+    SORT_NAME,SORT_NAME32,501
+    SORT_EXTENSION,SORT_EXTENSION33,516
+    SORT_TIME,SORT_TIME34,536
+static xp_path *paths = NULL;paths37,555
+static int path_count = 0;path_count38,585
+static const char *months[] = { "Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"};months40,613
+static int line_length = 80;line_length42,731
+static int print_dir_name = false;print_dir_name43,760
+static int print_format = FORMAT_WIDE;print_format44,795
+static int sort_file_type = SORT_NAME;sort_file_type45,834
+static bool all_files = false;all_files46,873
+void cprint(int r, int g, int b, const char *fmt, ...) {cprint48,905
+void parse_arg(char *arg) {parse_arg57,1117
+void process_args(int argc, char **argv) {process_args79,1637
+int get_name_length(char *name) {get_name_length88,1822
+int has_spaces(char *name) {has_spaces108,2261
+void print_size(uint64_t bytes) {print_size115,2397
+void print_name(xp_file file) {print_name145,3168
+void print_wide_format(xp_directory dir) {print_wide_format166,3731
+void print_long_format(xp_directory dir) {print_long_format202,4939
+void print_directory(xp_directory dir) {print_directory222,5518
+char *get_file_extension(char *file_name) {get_file_extension241,5933
+int compare_file_extension(xp_file file1, xp_file file2) {compare_file_extension251,6170
+int compare_file_name(xp_file file1, xp_file file2) {compare_file_name274,6823
+int compare_file_time(xp_file file1, xp_file file2) {compare_file_time285,7148
+typedef int (*file_sort_t)(xp_file, xp_file);file_sort_t296,7581
+void sort_files(xp_directory *dir, file_sort_t sort_func) {sort_files298,7628
+void sort_directory_files(xp_directory *dir, int sort_type) {sort_directory_files310,7974
+bool abnormal_file(xp_file file) {abnormal_file325,8399
+bool file_interesting(xp_file file) {file_interesting332,8610
+void filter_directory_files(xp_directory *dir) {filter_directory_files337,8725
+int main(int argc, char **argv) {main354,9242
+
+c:/Dev/Lister/src\xpath.h,3149
+#define XPATH_HXPATH_H2,17
+#define WIN32_LEAN_AND_MEANWIN32_LEAN_AND_MEAN5,51
+#define XP_NORMAL XP_NORMAL24,377
+#define XP_DIRECTORY XP_DIRECTORY25,409
+#define XP_HIDDEN XP_HIDDEN26,441
+#define XP_READONLY XP_READONLY27,473
+#define XP_SYSTEM XP_SYSTEM28,505
+#define XP_EXECUTABLE XP_EXECUTABLE29,538
+    unsigned char *data;data32,591
+    unsigned char *data;__anon3::data32,591
+    int count;count33,617
+    int count;__anon3::count33,617
+} xp_path;xp_path34,633
+    uint32_t year;year37,665
+    uint32_t year;__anon4::year37,665
+    uint32_t month;month38,685
+    uint32_t month;__anon4::month38,685
+    uint32_t day;day39,706
+    uint32_t day;__anon4::day39,706
+    uint32_t hour;hour40,725
+    uint32_t hour;__anon4::hour40,725
+    uint32_t minute;minute41,745
+    uint32_t minute;__anon4::minute41,745
+    uint32_t second;second42,767
+    uint32_t second;__anon4::second42,767
+    uint32_t milliseconds;milliseconds43,789
+    uint32_t milliseconds;__anon4::milliseconds43,789
+} xp_time;xp_time44,817
+    char *name;name47,849
+    char *name;__anon5::name47,849
+    uint64_t bytes;bytes48,866
+    uint64_t bytes;__anon5::bytes48,866
+    uint32_t attributes;attributes49,887
+    uint32_t attributes;__anon5::attributes49,887
+    uint64_t time;time50,913
+    uint64_t time;__anon5::time50,913
+} xp_file;xp_file51,933
+    xp_path path;path54,965
+    xp_path path;__anon6::path54,965
+    xp_file *files;files55,984
+    xp_file *files;__anon6::files55,984
+    int file_count;file_count56,1005
+    int file_count;__anon6::file_count56,1005
+} xp_directory;xp_directory58,1048
+bool xp_path_relative(xp_path path) {xp_path_relative61,1082
+bool xp_path_relative(xp_path path) {xp_path_relative71,1315
+void xp_append(xp_path *path, char *str) {xp_append83,1527
+void xp_path_free(xp_path *path) {xp_path_free103,2067
+inline void xp_directory_free(xp_directory *directory) {xp_directory_free109,2193
+xp_path xp_path_new(char *file_name) {xp_path_new119,2475
+xp_path xp_path_copy(xp_path path) {xp_path_copy128,2713
+xp_path xp_get_home_path() {xp_get_home_path137,2964
+xp_path xp_get_home_path() {xp_get_home_path145,3199
+void xp_file_push(xp_directory *directory, xp_file file) {xp_file_push155,3449
+void xp_replace_slashes(xp_path path) {xp_replace_slashes161,3702
+xp_path xp_parent_path(xp_path path) {xp_parent_path168,3867
+xp_path xp_current_path() {xp_current_path183,4304
+xp_path xp_current_path() {xp_current_path194,4658
+xp_path xp_substr(xp_path path, int start, int count) {xp_substr202,4794
+void xp_normalize(xp_path *path) {xp_normalize212,5157
+xp_path xp_fullpath(xp_path path) {xp_fullpath230,5764
+xp_path xp_fullpath(xp_path path) {xp_fullpath241,6198
+bool xp_directory_new(xp_path path, xp_directory *directory) {xp_directory_new256,6537
+bool xp_directory_new(xp_path path, xp_directory *directory) {xp_directory_new312,8472
+void xp_path_append(xp_path *path, char *str) {xp_path_append353,9634
+xp_time xp_utc_time(uint64_t time) {xp_utc_time365,9977
+xp_time xp_utc_time(uint64_t time) {xp_utc_time390,10888
