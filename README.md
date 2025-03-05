@@ -2,7 +2,7 @@
 
 List files in current or specified directories\
 
-###Flags
+### Flags
 - a: Show all files
 - l: Long format
 - t: Sort by time
